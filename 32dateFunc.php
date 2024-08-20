@@ -1,41 +1,178 @@
 <?php
-// set the default timezone to use.
+//1. set the default timezone to use.
 // https://raw.githubusercontent.com/leon-do/Timezones/main/timezone.json
 date_default_timezone_set('Asia/Kolkata');
+// date_default_timezone_set('UTC');
+// ----
+
+
+//2. get the default timezone.
 // if (date_default_timezone_get()) {
 //     echo 'date_default_timezone_set: ' . date_default_timezone_get() . '<br />';
 // }
 // echo "Today's date is :";
-// $today = date("d/m/Y");
+// $today = date("d/m/y"); 
 // echo $today;
 // ----
 
+// 3. date
 // Prints the day
 // echo date("l") . "<br>";
 
 // Prints the day, date, month, year, time, AM or PM
 // echo date("l j \of F Y h:i:s A");
-// echo date("h:i:s A");
+// echo date("N");
 
 // $today = date("F j, Y, g:i a");                 
 // echo $today ;
-// $today = date("m.d.y");                         
+// $today = date("m/d/y");                         
 // $today = date("j, n, Y");                       
 // $today = date("Ymd");                           
-// $today = date('h-i-s, j-m-y, it is w Day');     
+// $today = date('h-i-s, j-m-y');     
+// echo $today ;
 // $today = date('\i\t \i\s \t\h\e jS \d\a\y.');   
+// echo $today ;
 // $today = date("D M j G:i:s T Y");               
+// echo $today ;
 // $today = date('H:m:s \m \i\s\ \m\o\n\t\h');     
 // $today = date("H:i:s");                         
 // $today = date("Y-m-d H:i:s");  
 //---
 
 
+//4. oops method - DateTime Class
+$dateTime = new DateTime();
+$currentDate = $dateTime->format('Y-m-d H:i:s');
+echo"Current date and time: $currentDate";
+
+// $dateTime = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
+// $currentTime = $dateTime->format('H:i:s');
+// echo"Current date and time: $currentTime";
+
+// //5. The time() - function returns the current time in seconds since the Unix Epoch.
+// $currentTimestamp = time();
+// echo"Current Unix timestamp: " . $currentTimestamp;
+// ---
+
+// //6. strtotime() - This function parses a string into a Unix timestamp.
+// $dateString = "2023-10-15 15:30:00";
+// $timestamp = strtotime($dateString);
+// echo"Unix timestamp for $dateString: " . $timestamp;
+// ---
+
+// //7. mktime() - This function returns the Unix timestamp for a date.
+// $timestamp = mktime(12, 30, 0, 10, 15, 2023);
+// echo"Unix timestamp for October 15, 2023, 12:30 PM: " . $timestamp;
+// ---
 
 
+// //8. checkdate() - This function validates a Gregorian calendar date.
+// $month = 2;
+// $day = 29;
+// $year = 2024;
+// if (checkdate($month, $day, $year)) {
+//     echo"The date is valid: $year-$month-$day";
+// } else {
+//     echo"The date is not valid: $year-$month-$day";
+// }
+// ---
+
+// //9. getdate() - The getdate() function returns date/time information in form of an array.
+// $dateInfo = getdate();
+// print_r($dateInfo);
+// ---
+
+// //10. gettimeofday() - This function returns the current time in form of an array.
+// $dateInfo = gettimeofday();
+// echo $dateInfo;
+// ---
+
+// //11. gmdate() formats a GMT/UTC date/time.
+// $utcDate = gmdate('Y-m-d H:i:s');
+// echo"UTC date and time: $utcDate";
+// ---
+
+// //12. idate() - function formats a local time/date according to local settings.
+// $date = idate('m'); 
+// echo"Current hour: $date";
+// ---
+
+// //13. microtime() returns the current Unix timestamp with microseconds.
+// $microtime = microtime(true);
+// echo"Current Unix timestamp with microseconds: $microtime";
+// ---
+
+// //14. strftim() - his function parses a time/date generated.
+// $dateString = '2023-10-15 15:30:00';
+// $format = 'Y-m-d H:i:s';
+// $date = DateTime::createFromFormat($format, $dateString);
+// echo"Parsed Date: " . $date->format($format);
+// ---
+
+// //15.  date_add() function adds days, months, years, hours, minutes, and seconds to a date.
+// $date = new DateTime('2023-10-15');
+// $date->add(new DateInterval('P3D')); // Add 3 days
+// echo"New Date: " . $date->format('Y-m-d');
+
+// //16. date_create() - This function returns a new DateTime object.
+// $date = date_create('2023-10-15');
+// echo"Created Date: " . date_format($date, 'Y-m-d');
+// ---  
+
+// //17. date_diff() - returns the difference between two DateTime objects.
+// $date1 = new DateTime('2023-10-15');
+// $date2 = new DateTime('2023-10-20');
+// $interval = $date1->diff($date2);
+// echo"Difference: " . $interval->format('%R%a days');
+// ---  
+
+// // 18. date_format() - This function returns a date formatted according to a given format.
+// $date = new DateTime('2023-10-15');
+// $formattedDate = date_format($date, 'l, F j, Y');
+// echo"Formatted Date: " . $formattedDate;
+// ---  
+
+// // 19. date_modify() - This function alters the timestamp of a DateTime object.
+// $date = new DateTime('2023-10-15');
+// $date->modify('+3 days');
+// echo"Modified Date: " . $date->format('Y-m-d');
+// ---  
+
+// //20. date_offset_get() - returns the timezone offset from GMT of the given DateTime object.
+// $date = new DateTime('2023-10-15', new DateTimeZone('America/New_York'));
+// $offset = $date->getOffset();
+// echo"Time Zone Offset: " . $offset;
+// ---  
+
+// //21. date_parse() - returns an associative array with detailed info about a given date.
+// $dateString = '2023-10-15 15:30:00';
+// $dateInfo = date_parse($dateString);
+// print_r($dateInfo);
+
+// //22. date_sub() - function subtracts days, months, years, hours, minutes, and seconds from a date.
+// $date = new DateTime('2023-10-15');
+// $interval = new DateInterval('P3D'); // Subtract 3 days
+// $date->sub($interval);
+// echo"New Date: " . $date->format('Y-m-d');
+
+
+// //23. date_days_in_month() - returns the number of days in a month for a given year and calendar. Note: this function is provided by the Calendar extension, which may not be enabled by default in all PHP installations.
+// $year = 2023;
+// $month = 2; // February
+// $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+// echo"Days in February 2023: $daysInMonth";
+
+// //24. date_date_set() - This sets the date to a specified value.
+// $date = new DateTime();
+// $date->setDate(2023, 10, 15); // Set the date to October 15, 2023
+// echo"Set Date: " . $date->format('Y-m-d');
+
+// //25. date_interval_format() - formats the interval.
+// $interval = new DateInterval('P2Y3M4DT5H6M7S'); // A sample interval
+// $formattedInterval = $interval->format('%Y years, %M months, %D days');
+// echo"Formatted Interval: " . $formattedInterval;
+ 
 ?>
-
-
 
 
 <!-- Description
