@@ -1,6 +1,6 @@
 <?php
     // https://www.php.net/manual/en/function.password-hash.php
-
+    
     $password = "admin@123";
 
     $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -13,5 +13,4 @@
     else{
         echo"Incorrect password!";
     }
-
 ?>
