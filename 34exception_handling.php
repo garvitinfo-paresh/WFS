@@ -1,4 +1,5 @@
 <!-- https://www.php.net/manual/en/language.exceptions.php -->
+<!-- This function displays structured information about one or more expressions that includes its type and value. Arrays and objects are explored recursively with values indented to show structure. -->
 
 <?php
 //  Ex-1 
