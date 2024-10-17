@@ -1,0 +1,4 @@
+Create virtual env -  python3 -m venv .myenv   ->  python -m venv .myenv
+activate virtual env -  source .myenv/bin/activate 
+install flask - pip install flask
+check installed packages - pip freeze
